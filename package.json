@@ -1,0 +1,45 @@
+{
+  "name": "@elvoline/twig",
+  "version": "1.0.0",
+  "description": "twig.js renderer for elvoline",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elvoline/twig.git"
+  },
+  "scripts": {
+    "lint": "eslint --version && eslint .",
+    "pretest": "npm run lint",
+    "test": "cross-env NODE_ENV=test nyc mocha",
+    "posttest": "npm run coverage",
+    "coverage": "nyc report --reporter=lcov"
+  },
+  "author": "Elvoline S.à r.l.",
+  "license": "ISC",
+  "nyc": {
+    "require": [
+      "babel-register",
+      "./test/helper.js"
+    ]
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "jquery": "^3.0.0",
+    "twig": "^1.10.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^5.1.1",
+    "eslint": "^4.12.0",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.5.1",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.14.0",
+    "twig": "^1.10.5"
+  }
+}

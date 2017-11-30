@@ -1,0 +1,10 @@
+{
+	"env": {
+		"mocha": true,
+		"node": true
+	},
+	"globals": {
+		"sinon": true,
+		"expect": true
+	}
+}
