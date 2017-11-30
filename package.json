@@ -2,12 +2,14 @@
   "name": "@elvoline/twig",
   "version": "1.0.0",
   "description": "twig.js renderer for elvoline",
-  "main": "index.js",
+  "module": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:elvoline/twig.git"
   },
   "scripts": {
+    "build": "cross-env NODE_ENV=production rollup --config",
     "lint": "eslint --version && eslint .",
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test nyc mocha",
@@ -38,6 +40,8 @@
     "jsdom": "^11.5.1",
     "mocha": "^4.0.1",
     "nyc": "^11.3.0",
+    "rollup": "^0.52.0",
+    "rollup-plugin-babel": "^3.0.2",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.14.0",
     "twig": "^1.10.5"
