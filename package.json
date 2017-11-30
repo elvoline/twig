@@ -14,7 +14,8 @@
     "pretest": "npm run lint",
     "test": "cross-env NODE_ENV=test nyc mocha",
     "posttest": "npm run coverage",
-    "coverage": "nyc report --reporter=lcov"
+    "coverage": "nyc report --reporter=lcov",
+    "prepublish": "npm run build"
   },
   "author": "Elvoline S.à r.l.",
   "license": "ISC",
