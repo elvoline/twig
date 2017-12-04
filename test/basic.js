@@ -58,4 +58,17 @@ describe('basic functionality', () => {
 		
 		return promise.then(() => expect(spy).to.have.been.calledWith(sinon.match.instanceOf($)));
 	});
+	
+	it('should not crash if translations are not set yet', () => {
+		var template = twig({
+			'data': `it renders {% trans %}even without translations{% endtrans %}`,
+		});
+		
+		var promise = template
+			.render()
+			.catch()
+			.then((dom) => dom.text());
+		
+		return expect(promise).to.eventually.equal('it renders even without translations');
+	});
 });

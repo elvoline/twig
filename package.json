@@ -1,6 +1,6 @@
 {
   "name": "@elvoline/twig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "twig.js renderer for elvoline",
   "module": "dist/es.js",
   "main": "dist/index.js",

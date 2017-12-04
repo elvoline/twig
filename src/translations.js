@@ -1,6 +1,6 @@
 import modifiable from './modifiable';
 
-var data = {};
+var data = setTranslations();
 
 export function setTranslations (promise = {}) {
 	return data = Promise
@@ -102,7 +102,7 @@ export function extendTwig (Twig) {
 		'parse': function (token, context) {
 			var shim = Object.keys(context).reduce((accumulator, key) => Object.assign(accumulator, {
 				[key]: `{{ ${key} }}`,
-			}, {}));
+			}), {});
 			
 			var key = Twig.parse.apply(this, [token.output, shim]);
 			var code = hashCode(JSON.stringify(key));
