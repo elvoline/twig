@@ -7,6 +7,9 @@ chai.use(chaiAsPromised);
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 
+import xhrMock from 'xhr-mock';
+xhrMock.setup();
+
 global.document = new JSDOM();
 global.window = document.window;
 global.navigator = window.navigator;

@@ -20,6 +20,7 @@ function getConfig (output) {
 						},
 					],
 				],
+				'plugins': ['external-helpers'],
 			}),
 		],
 	};

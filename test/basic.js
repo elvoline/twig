@@ -3,8 +3,11 @@ import twig, {
 	renderer,
 	addHook,
 } from '../index';
+import xhrMock from 'xhr-mock';
 
 describe('basic functionality', () => {
+	afterEach(() => xhrMock.reset());
+	
 	it('should render the template', () => {
 		var template = twig({
 			'data': `it renders`,
@@ -27,6 +30,24 @@ describe('basic functionality', () => {
 			.then((dom) => dom.text());
 		
 		return expect(promise).to.eventually.equal('it renders');
+	});
+	
+	it('should render remote template', () => {
+		xhrMock.get('http://example.com/template.twig', (req, res) => {
+			return res
+				.status(200)
+				.header('Content-Type', 'application/octet-stream')
+				.body(`it renders remote`);
+		});
+		var template = renderer({
+			'href': 'http://example.com/template.twig',
+		});
+		
+		var promise = template
+			.render({})
+			.then((dom) => dom.text());
+		
+		return expect(promise).to.eventually.equal('it renders remote');
 	});
 	
 	it('should substitute the variable', () => {
