@@ -5,8 +5,9 @@ function getConfig (output) {
 		'input': 'index.js',
 		'output': output,
 		'external': [
-			'twig',
 			'jquery',
+			'lodash',
+			'twig',
 		],
 		'plugins': [
 			babel({

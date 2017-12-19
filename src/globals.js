@@ -1,4 +1,4 @@
-var globals = Object.create(null);
+var globals = {};
 
 export function addGlobal (key, value) {
 	return globals[key] = value;

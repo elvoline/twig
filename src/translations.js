@@ -1,3 +1,8 @@
+import {
+	assign,
+	keys,
+	reduce,
+} from 'lodash';
 import modifiable from './modifiable';
 
 var data = setTranslations();
@@ -11,7 +16,7 @@ export function setTranslations (promise = {}) {
 				'expression': trans.plural && trans.plural.expression ? expressionToFunction(trans.plural.expression) : expressionToFunction(),
 			},
 			'translations': {
-				'map': Object.entries(trans.translations && trans.translations.map ? trans.translations.map : {}).reduce((accumulator, [key, value]) => Object.assign(accumulator, {
+				'map': reduce(trans.translations && trans.translations.map ? trans.translations.map : {}, (accumulator, value, key) => assign(accumulator, {
 					[key]: JSON.parse(value),
 				}), {}),
 			},
@@ -100,7 +105,7 @@ export function extendTwig (Twig) {
 			return token;
 		},
 		'parse': function (token, context) {
-			var shim = Object.keys(context).reduce((accumulator, key) => Object.assign(accumulator, {
+			var shim = keys(context).reduce((accumulator, key) => assign(accumulator, {
 				[key]: `{{ ${key} }}`,
 			}), {});
 			
