@@ -64,6 +64,22 @@ describe('basic functionality', () => {
 		return expect(promise).to.eventually.equal('it renders bar');
 	});
 	
+	it('should not remember variables from previous renders', () => {
+		var template = twig({
+			'data': `it renders {{ foo }}properly`,
+		});
+		
+		var promise = Promise
+			.resolve()
+			.then(() => template.render({
+				'foo': 'bar',
+			}))
+			.then(() => template.render())
+			.then((dom) => dom.text());
+		
+		return expect(promise).to.eventually.equal('it renders properly');
+	});
+	
 	it('should run added hooks with the generated DOM', () => {
 		var template = twig({
 			'data': `it renders`,

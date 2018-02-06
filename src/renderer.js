@@ -17,7 +17,8 @@ export function addHook (hook) {
 }
 
 export default function (options) {
-	var promise = new Promise((resolve) => {
+	var promise;
+	function deferParse (resolve) {
 		var template = Twig.twig(assign({}, options, {
 			'load': resolve,
 		}));
@@ -25,11 +26,14 @@ export default function (options) {
 		if (template.render) {
 			resolve(template);
 		}
-	});
+	}
 	
 	return {
-		'promise': promise,
 		'render': (data) => {
+			if (!promise) {
+				promise = new Promise(deferParse);
+			}
+			
 			return Promise
 				.all([
 					promise,
