@@ -7,7 +7,13 @@
 
 This is a Twig.js renderer customized for use on Elvoline.
 
-Added features include an always-on promise support, deferred template parsing, global variables, automatic DOM creation and i18n.
+Added features are:
+
+* always-on promise support
+* deferred template parsing
+* global variables
+* automatic DOM creation
+* i18n
 
 # Docs
 

@@ -1,3 +1,8 @@
+/**
+ * Translation module.
+ * @module
+ */
+
 import {
 	assign,
 	keys,
@@ -5,7 +10,18 @@ import {
 } from 'lodash';
 import modifiable from './modifiable';
 
+/**
+ * Variable containing translation data.
+ * @type {Object}
+ */
+
 var data = setTranslations();
+
+/**
+ * Parses and sets translation data.
+ * @param {external:Promise.<Object>} - promise resolving to raw translation data
+ * @return {external:Promise.<Object>} Translation data in a ready to use format.
+ */
 
 export function setTranslations (promise = {}) {
 	return data = Promise
@@ -23,11 +39,22 @@ export function setTranslations (promise = {}) {
 		}));
 }
 
+/**
+ * Resolves translation promise into a sync object.
+ * @return {Object} Translation data in a ready to use format.
+ */
+
 export function getTranslations () {
 	return Promise
 		.resolve(data)
 		.then((sync) => data = sync);
 }
+
+/**
+ * Hashes string into a number using a basic algorithm.
+ * @param {string} - input value
+ * @return {number} Hashed numeric value.
+ */
 
 export function hashCode (value) {
 	return value.split('').reduce((a, b) => {
@@ -36,9 +63,21 @@ export function hashCode (value) {
 	}, 0);
 }
 
+/**
+ * Turns a gettext expression into a callable function.
+ * @param {string} - gettext expression
+ * @return {Function} Function that returns an index.
+ */
+
 export function expressionToFunction (expression = 0) {
 	return new Function('n', `"use strict"; return +(${expression})`);
 }
+
+/**
+ * Extends Twig with translation capabilities.
+ * @param {Object} - twig object
+ * @return {Object} Twig object.
+ */
 
 export function extendTwig (Twig) {
 	Twig.exports.extendFilter('trans', (raw) => data.translations.map[hashCode(JSON.stringify(raw))] || raw);

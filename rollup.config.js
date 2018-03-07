@@ -31,6 +31,7 @@ export default [
 	getConfig({
 		'file': 'dist/index.js',
 		'format': 'cjs',
+		'exports': 'named',
 	}),
 	getConfig({
 		'file': 'dist/es.js',
