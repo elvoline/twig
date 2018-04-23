@@ -5,6 +5,20 @@ import twig, {
 
 describe('translations', () => {
 	describe('setTranslations()', () => {
+		it('should default to english plural settings', () => {
+			var template = twig({
+				'data': `translate {% trans %}single{% plural amountOf %}double{% endtrans %}`,
+			});
+			
+			var promise = template
+				.render({
+					'amountOf': 2,
+				})
+				.then((dom) => dom.text());
+			
+			return expect(promise).to.eventually.equal('translate double');
+		});
+		
 		it('should not crash on transforming blank translation data', () => {
 			var promise = setTranslations();
 			

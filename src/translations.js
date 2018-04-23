@@ -15,7 +15,12 @@ import modifiable from './modifiable';
  * @type {Object}
  */
 
-var data = setTranslations();
+var data = setTranslations({
+	'plural': {
+		'forms': 2,
+		'expression': 'n != 1',
+	},
+});
 
 /**
  * Parses and sets translation data.
