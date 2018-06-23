@@ -42,7 +42,7 @@
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.0.1",
     "cross-env": "^5.1.4",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0",
     "jquery": "^3.3.1",
     "jsdoc": "^3.5.5",
     "jsdom": "^11.10.0",
