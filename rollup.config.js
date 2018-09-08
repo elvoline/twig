@@ -12,16 +12,6 @@ function getConfig (output) {
 		'plugins': [
 			babel({
 				'exclude': 'node_modules/**',
-				'babelrc': false,
-				'presets': [
-					[
-						'env',
-						{
-							'modules': false,
-						},
-					],
-				],
-				'plugins': ['external-helpers'],
 			}),
 		],
 	};
