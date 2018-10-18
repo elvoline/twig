@@ -3,10 +3,7 @@
 		"browser": true,
 		"es6": true
 	},
-	"parserOptions": {
-		"sourceType": "module",
-		"ecmaVersion": 8
-	},
+	"parser": "babel-eslint",
 	"extends": "eslint:recommended",
 	"rules": {
 		"block-scoped-var": ["error"],

@@ -2,9 +2,13 @@ node_modules
 npm-debug.log*
 docs
 coverage
+src
+test
 .nyc_output
 .babelrc
 .gitignore
 .eslint*
 .travis.yml
-test
+jsdoc.json
+rollup.config.js
+index.js

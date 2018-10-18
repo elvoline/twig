@@ -3,11 +3,6 @@
  * @module
  */
 
-import {
-	assign,
-	keys,
-	reduce,
-} from 'lodash';
 import modifiable from './modifiable';
 
 /**
@@ -31,17 +26,22 @@ var data = setTranslations({
 export function setTranslations (promise = {}) {
 	return data = Promise
 		.resolve(promise)
-		.then((trans) => ({
-			'plural': {
-				'forms': trans.plural && trans.plural.forms ? trans.plural.forms : 1,
-				'expression': trans.plural && trans.plural.expression ? expressionToFunction(trans.plural.expression) : expressionToFunction(),
-			},
-			'translations': {
-				'map': reduce(trans.translations && trans.translations.map ? trans.translations.map : {}, (accumulator, value, key) => assign(accumulator, {
-					[key]: JSON.parse(value),
-				}), {}),
-			},
-		}));
+		.then((trans) => {
+			const map = trans.translations && trans.translations.map ? trans.translations.map : {};
+			
+			return {
+				'plural': {
+					'forms': trans.plural && trans.plural.forms ? trans.plural.forms : 1,
+					'expression': trans.plural && trans.plural.expression ? expressionToFunction(trans.plural.expression) : expressionToFunction(),
+				},
+				'translations': {
+					'map': Object.keys(map).reduce((accumulator, key) => ({
+						...accumulator,
+						[key]: JSON.parse(map[key]),
+					}), {}),
+				},
+			};
+		});
 }
 
 /**
@@ -149,7 +149,8 @@ export function extendTwig (Twig) {
 			return token;
 		},
 		'parse': function (token, context) {
-			var shim = keys(context).reduce((accumulator, key) => assign(accumulator, {
+			var shim = Object.keys(context).reduce((accumulator, key) => ({
+				...accumulator,
 				[key]: `{{ ${key} }}`,
 			}), {});
 			

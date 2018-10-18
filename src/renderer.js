@@ -5,9 +5,6 @@
 
 import Twig from 'twig';
 import $ from 'jquery';
-import {
-	assign,
-} from 'lodash';
 import { getGlobals } from './globals';
 import { getTranslations, extendTwig } from './translations';
 
@@ -53,13 +50,14 @@ export function addHook (hook) {
 
 export default function (options) {
 	var promise;
-	function deferParse (resolve) {
-		var template = Twig.twig(assign({}, options, {
-			'load': resolve,
-		}));
+	function deferParse (load) {
+		var template = Twig.twig({
+			...options,
+			load,
+		});
 		
 		if (template.render) {
-			resolve(template);
+			load(template);
 		}
 	}
 	
@@ -74,7 +72,10 @@ export default function (options) {
 					promise,
 					getTranslations(),
 				])
-				.then(([template]) => template.render(assign({}, getGlobals(), data), {}, true))
+				.then(([template]) => template.render({
+					...getGlobals(),
+					...data,
+				}, {}, true))
 				.then((data) => {
 					var nodes = $($.parseHTML(data));
 					hooks.forEach((hook) => hook(nodes));
