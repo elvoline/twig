@@ -10,7 +10,7 @@ import { getTranslations, extendTwig } from './translations';
 
 Twig.extend((Twig) => extendTwig(Twig));
 
-export { extendFunction, extendFilter } from 'twig';
+export { extendFunction, extendFilter, extendTag } from 'twig';
 
 /**
  * Array containing hooks to be called with the rendered nodes.
