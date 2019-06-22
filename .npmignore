@@ -7,6 +7,7 @@ test
 .nyc_output
 .babelrc
 .gitignore
+.editorconfig
 .eslint*
 .travis.yml
 jsdoc.json

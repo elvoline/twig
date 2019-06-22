@@ -107,7 +107,7 @@ setTranslations({
 			[hashCode(JSON.stringify('single and {{ var }}'))]: JSON.stringify(['singularized and {{ var }}', 'pluralized and {{ var }}']),
 		},
 	},
-})
+});
 ```
 
 You can also pass a promise to setTranslations(), rendering will be deferred globally until the promise fulfills with the translations.
