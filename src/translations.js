@@ -158,13 +158,14 @@ export function extendTwig (Twig) {
 			var code = hashCode(JSON.stringify(key));
 			
 			var output = new modifiable();
-			var translation = data.translations.map[code];
+			var forms = data.translations.map[code];
+			var translation = !forms || typeof forms === 'string' ? forms : forms[0];
 			if (translation) {
 				var raw_tokens = Twig.tokenize.apply(this, [translation]);
 				var tokens = Twig.compile.apply(this, [raw_tokens]);
 				
 				output.setValue(Twig.parse.apply(this, [tokens, context]));
-				output.setData('translation', translation);
+				output.setData('translation', forms);
 			}
 			else {
 				output.setValue(Twig.parse.apply(this, [token.output, context]));

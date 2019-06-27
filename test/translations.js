@@ -212,6 +212,18 @@ describe('translations', () => {
 			
 			return expect(promise).to.eventually.equal('translate doubles');
 		});
+		
+		it('should render non-plural trans tag with singular translation', () => {
+			var template = twig({
+				'data': `translate {%trans %}single{% endtrans %}`,
+			});
+			
+			var promise = template
+				.render()
+				.then((dom) => dom.text());
+			
+			return expect(promise).to.eventually.equal('translate singularized');
+		});
 	});
 	
 	describe('plural form using a variable', () => {
