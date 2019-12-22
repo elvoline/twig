@@ -1,7 +1,6 @@
-[![npm version](https://img.shields.io/npm/v/@elvoline/twig.svg)](https://www.npmjs.com/package/@elvoline/twig)
-[![Build Status](https://travis-ci.org/elvoline/twig.svg?branch=master)](https://travis-ci.org/elvoline/twig)
+[![npm version](https://img.shields.io/npm/v/@elvoline/twig.svg?logo=npm)](https://www.npmjs.com/package/@elvoline/twig)
+[![build status](https://github.com/elvoline/twig/workflows/build/badge.svg)](https://github.com/elvoline/twig/actions)
 [![codecov](https://codecov.io/gh/elvoline/twig/branch/master/graph/badge.svg)](https://codecov.io/gh/elvoline/twig)
-[![Greenkeeper badge](https://badges.greenkeeper.io/elvoline/twig.svg)](https://greenkeeper.io/)
 
 # About
 
