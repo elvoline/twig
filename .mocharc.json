@@ -1,0 +1,5 @@
+{
+	"recursive": true,
+	"require": ["@babel/register"],
+	"file": ["test/helper.js"]
+}

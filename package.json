@@ -21,12 +21,6 @@
   },
   "author": "Elvoline S.à r.l.",
   "license": "ISC",
-  "nyc": {
-    "require": [
-      "@babel/register",
-      "./test/helper.js"
-    ]
-  },
   "dependencies": {},
   "peerDependencies": {
     "jquery": "^3.0.0",
@@ -37,6 +31,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-istanbul": "^5.2.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "codecov": "^3.1.0",
