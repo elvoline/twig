@@ -85,6 +85,8 @@ export function expressionToFunction (expression = 0) {
  */
 
 export function extendTwig (Twig) {
+	var twigParse = Twig.ParseState ? new Twig.ParseState().parse : Twig.parse;
+	
 	Twig.exports.extendFilter('trans', (raw) => data.translations.map[hashCode(JSON.stringify(raw))] || raw);
 	
 	Twig.exports.extendTag({
@@ -121,10 +123,10 @@ export function extendTwig (Twig) {
 				var raw_tokens = Twig.tokenize.apply(this, [translation[form]]);
 				var tokens = Twig.compile.apply(this, [raw_tokens]);
 				
-				chain.setValue(Twig.parse.apply(this, [tokens, context]));
+				chain.setValue(twigParse.apply(this, [tokens, context]));
 			}
 			else if (form !== 0) {
-				chain.setValue(Twig.parse.apply(this, [token.output, context]));
+				chain.setValue(twigParse.apply(this, [token.output, context]));
 			}
 			
 			return {
@@ -154,7 +156,7 @@ export function extendTwig (Twig) {
 				[key]: `{{ ${key} }}`,
 			}), {});
 			
-			var key = Twig.parse.apply(this, [token.output, shim]);
+			var key = twigParse.apply(this, [token.output, shim]);
 			var code = hashCode(JSON.stringify(key));
 			
 			var output = new modifiable();
@@ -164,11 +166,11 @@ export function extendTwig (Twig) {
 				var raw_tokens = Twig.tokenize.apply(this, [translation]);
 				var tokens = Twig.compile.apply(this, [raw_tokens]);
 				
-				output.setValue(Twig.parse.apply(this, [tokens, context]));
+				output.setValue(twigParse.apply(this, [tokens, context]));
 				output.setData('translation', forms);
 			}
 			else {
-				output.setValue(Twig.parse.apply(this, [token.output, context]));
+				output.setValue(twigParse.apply(this, [token.output, context]));
 				output.setData('translation', []);
 			}
 			
