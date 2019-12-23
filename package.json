@@ -1,7 +1,7 @@
 {
   "name": "@elvoline/twig",
-  "version": "2.1.6",
-  "description": "twig.js renderer for elvoline",
+  "version": "2.1.7",
+  "description": "Twig.js renderer for Elvoline",
   "module": "dist/es.js",
   "main": "dist/index.js",
   "repository": {
@@ -50,6 +50,9 @@
     "twig": "^1.13.2",
     "xhr-mock": "^2.4.1"
   },
+  "files": [
+    "dist/**/*.js"
+  ],
   "keywords": [
     "twig",
     "i18n",
