@@ -45,7 +45,7 @@
     "nyc": "^15.0.0",
     "rollup": "^1.19.3",
     "rollup-plugin-babel": "^4.2.0",
-    "sinon": "^8.0.0",
+    "sinon": "^9.0.1",
     "sinon-chai": "^3.3.0",
     "twig": "^1.13.2",
     "xhr-mock": "^2.4.1"
